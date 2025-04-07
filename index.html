@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exemple</title>
+  <link href="css/output.css" rel="stylesheet" />
+  <script src="./js/questionnaire.js"></script>
+  <link rel="stylesheet" href="./css/questionnaire.css">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: rgb(0, 2, 3); /* Fond de la page */
+    }
+
+    footer {
+      background-color: rgb(0, 8, 8) !important; /* Application correcte de la couleur du footer */
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    /* Pour s'assurer qu'il y ait assez d'espace pour le footer */
+    .content {
+      min-height: 100vh;
+      padding-bottom: 50px; /* Pour laisser de l'espace en bas de la page */
+    }
+  </style>
+</head>
+
+<body class="bg-black">
+  <!-- Section d'accueil avec le GIF -->
+  <div class="mx-auto">
+    <div class="h-screen h-48 w-full bg-[url('../static/img/key-art.gif')] bg-contain bg-bottom bg-no-repeat flex items-center justify-center">
+      <div class="text-center">
+        <!-- Logo légèrement au-dessus du bouton -->
+        <img src="https://deltarune.com/assets/images/logo.png" alt="About DELTARUNE" class="mx-auto mb-24 w-80" />
+
+        <!-- Lien pour aller à la section "questionnaire" -->
+        <a class="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-lg" href="#questionnaire">Start</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="questionnaire" class="section text-white">
+    <div class="bla h-screen h-48 w-full bg-[url('../static/img/key-art.gif')] bg-contain bg-bottom bg-no-repeat flex items-center justify-center" style="transform: scaleY(-1);">
+      <div style="transform: scaleY(-1);">
+        <div class="flex flex-col isolate h-screen w-screen items-center" id="contact">
+          <div id="divquest" style="background-color: rgba(107, 234, 236, 0.8);" class="flex flex-col bg-blue-300 p-6 rounded-lg shadow-lg max-w-md w-full mt-12">
+            <!-- Suppression de la classe 'flex' et utilisation uniquement de 'text-center' -->
+            <h1 class="text-5xl font-semibold text-blue-600 dark:text-sky-400 text-center mt-16">Me contacter</h1>
+            <h2 class="text-2xl text-gray-700 font-pixel font-semibold mt-2 mb-8 text-center">Pour pouvoir me contacter, vous devez d'abord le mériter en répondant a ce questionnaire sur Undertale/Deltarune ! </h2>
+          </div>
+
+          <div id="divquest" class="flex flex-col bg-blue-300 p-6 rounded-lg shadow-lg max-w-md w-full mt-12">
+            <h1 class="text-2xl font-bold mb-4 text-center text-gray-700">Questionnaire</h1>
+            <div id="question" class="text-xl font-bold mb-4 text-center text-gray-700">Quel est la capitale de la France ?</div>
+            <div id="reponses" class="flex flex-col space-y-2">
+              <button class="btn btn-primary">Chara</button>
+              <button class="btn btn-primary">Sans</button>
+              <button class="btn btn-primary">Frisk</button>
+              <button class="btn btn-primary">kris</button>
+            </div>
+
+            <button id="bruteforce-btn" class="cursor-pointer transition active:scale-110 rounded-md mt-2 bg-red-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-red-700 focus:shadow-none active:bg-red-700 hover:bg-red-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" onclick="bruteforce(this)">Bruteforce 👨‍💻</button>
+            <p id="click-count" class="text-red-600 font-bold text-center">Nombre d'essai: 0</p>
+
+
+
+
+            
+
+
+            <span id="spinner" class="loading loading-spinner text-neutral hidden loading-xl mb-4"></span>
+            <div id="result" class="text-lg text-red-700 text-center"></div>
+            <div id="countdown" class="text-lg text-green-600"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <!-- Contenu du footer avec la couleur de fond et du texte centré -->
+    Footer du site
+  </footer>
+
+  <!-- CSS -->
+
+
+  <!-- JS -->
+</body>
+
+</html>
