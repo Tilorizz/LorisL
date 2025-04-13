@@ -1,0 +1,20 @@
+.bg-white.p-6.rounded-lg.shadow-lg.max-w-md.w-full {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+module.exports = {
+    content: ["./src/**/*.{html,js}"],
+    theme: {
+      extend: {},
+    },
+    plugins: [
+      require('daisyui'),
+    ],
+    daisyui: {
+      styled: false, // Désactive les styles globaux
+      themes: false, // Désactive les thèmes par défaut
+      base: false,   // Désactive les styles de base
+      utils: true,
+    },
+  };

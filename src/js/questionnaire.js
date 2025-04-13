@@ -14,6 +14,13 @@ let bruteforceClickCount = 0; // Compteur de clics pour le bruteforce
 // Fonction pour gérer les clics sur le bouton bruteforce
 function handleBruteforceClick() {
     bruteforceClickCount++; // Incrémente le compteur de clics
+
+    // Affichage du nombre de clics en rouge
+    const clickCountElement = document.getElementById("click-count");
+    if (clickCountElement) {
+        clickCountElement.textContent = `Nombre de clics: ${bruteforceClickCount}`;
+    }
+
     const bruteforceBtn = document.getElementById("bruteforce-btn");
 
     if (bruteforceClickCount >= 10) {
@@ -36,7 +43,7 @@ const questionnaire = [
             { rlabel: "Chara", rid: 1 },
             { rlabel: "Sans", rid: 2 },
             { rlabel: "Frisk", rid: 3 },
-            { rlabel: "Chris", rid: 4 }
+            { rlabel: "Kris", rid: 4 }
         ]
     },
     {

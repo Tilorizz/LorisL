@@ -1,101 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exemple</title>
-  <link href="css/output.css" rel="stylesheet" />
-  <script src="./js/questionnaire.js"></script>
-  <link rel="stylesheet" href="./css/questionnaire.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deltarun</title>
+    <link href="css/output.css" rel="stylesheet" />
+    <script src="./js/questionnaire.js"></script>
+    <link rel="stylesheet" href="./css/questionnaire.css">
+    <link href="css/output.css" rel="stylesheet" /> <!-- tes styles -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" />
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
 
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: rgb(0, 2, 3); /* Fond de la page */
-    }
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
 
-    footer {
-      background-color: rgb(0, 8, 8) !important; /* Application correcte de la couleur du footer */
-      padding: 20px;
-      text-align: center;
-      color: white;
-    }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(0, 2, 3);
+      }
 
-    /* Pour s'assurer qu'il y ait assez d'espace pour le footer */
-    .content {
-      min-height: 100vh;
-      padding-bottom: 50px; /* Pour laisser de l'espace en bas de la page */
-    }
-  </style>
-</head>
 
-<body class="bg-black">
+
+      .content {
+        min-height: 100vh;
+        padding-bottom: 50px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-black ">
+    <header class="fixed top-0 left-0 w-full flex justify-between items-center px-6 py-4 bg-blue-300 bg-opacity-70 backdrop-blur-md z-50">
+  
+      <!-- Conteneur des boutons avec flex pour les espacer -->
+      <div class="flex justify-between w-full max-w-4xl items-center">
+        
+        
+        <a class="px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md transition" href="#questionnaire">
+          Me contacter
+        </a>
+  
+        <!-- Bouton Calculatrice centré -->
+        <button class="btn" onclick="my_modal_1.showModal()">Calculatrice</button> <!--Bouton qui permet d'ouvrir la calculatrice dans un modal-->
+        <dialog id="my_modal_1" class="modal"> <!--Config du modal calculatrice avec le texte affiché et les boutons de la calculatrice-->
+          <div class="modal-box">
+            <p class="py-4">Appuyez sur ESC ou le bouton Fermer pour fermer l'onglet.</p>
+            <p class="py-4" style="font-family: 'Blackside'; font-size:60px">Calculatrice</p>
+            <div class="chat chat-start">
+              <div class="chat-bubble chat-bubble-info" style="width:232px">
+                <div class="calculator" id="calculator">
+                  <input type="text" id="display" class="kbd kbd-xl" style="width:205px;background-color:rgb(247, 247, 247);border-color:rgb(237, 234, 234)"> <!--Affichage du résultat et point d'entrée du clavier-->
+                  <div class="buttons" id="buttons">
+                    <button onclick="add('7')" class="btn btn-secondary">7</button>
+                    <button onclick="add('8')" class="btn btn-secondary">8</button>
+                    <button onclick="add('9')" class="btn btn-secondary">9</button>
+                    <button onclick="add('+')" class="btn btn-primary">+</button>
+                    <br>
+                    <button onclick="add('4')" class="btn btn-secondary">4</button>
+                    <button onclick="add('5')" class="btn btn-secondary">5</button>
+                    <button onclick="add('6')" class="btn btn-secondary">6</button>
+                    <button onclick="add('-')" class="btn btn-primary">-</button>
+                    <br>
+                    <button onclick="add('1')" class="btn btn-secondary">1</button>
+                    <button onclick="add('2')" class="btn btn-secondary">2</button>
+                    <button onclick="add('3')" class="btn btn-secondary">3</button>
+                    <button onclick="add('*')" class="btn btn-primary">*</button>
+                    <br>
+                    <button onclick="add('.')" class="btn btn-secondary">.</button>
+                    <button onclick="add('0')" class="btn btn-secondary">0</button>
+                    <button onclick="resultat()" class="btn btn-primary2">=</button>
+                    <br>
+                    <button onclick="del()" class="btn btn-primary2">DEL</button>
+                    <button onclick="clearDisplay()" class="btn btn-primary2">CLEAR</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-action">
+              <form method="dialog">
+                <button class="btn">Fermer</button> <!--Bouton permettant de fermer le modal-->
+              </form>
+            </div>
+          </div>
+        </dialog> 
+  
+      </div>
+      
+    </header>
+
+
+
   <!-- Section d'accueil avec le GIF -->
-  <div class="mx-auto">
-    <div class="h-screen h-48 w-full bg-[url('../static/img/key-art.gif')] bg-contain bg-bottom bg-no-repeat flex items-center justify-center">
+  <div class="mx-auto pt-24">
+    <div class="h-screen w-full bg-[url('../static/img/key-art.gif')] bg-contain bg-bottom bg-no-repeat flex items-center justify-center">
       <div class="text-center">
-        <!-- Logo légèrement au-dessus du bouton -->
         <img src="https://deltarune.com/assets/images/logo.png" alt="About DELTARUNE" class="mx-auto mb-24 w-80" />
-
-        <!-- Lien pour aller à la section "questionnaire" -->
-        <a class="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-lg" href="#questionnaire">Start</a>
       </div>
     </div>
   </div>
 
   <div id="questionnaire" class="section text-white">
-    <div class="bla h-screen h-48 w-full bg-[url('../static/img/key-art.gif')] bg-contain bg-bottom bg-no-repeat flex items-center justify-center" style="transform: scaleY(-1);">
+    <div class="bla h-screen w-full bg-[url('../static/img/key-art.gif')] bg-contain bg-bottom bg-no-repeat flex items-center justify-center" style="transform: scaleY(-1);">
       <div style="transform: scaleY(-1);">
         <div class="flex flex-col isolate h-screen w-screen items-center" id="contact">
           <div id="divquest" style="background-color: rgba(107, 234, 236, 0.8);" class="flex flex-col bg-blue-300 p-6 rounded-lg shadow-lg max-w-md w-full mt-12">
-            <!-- Suppression de la classe 'flex' et utilisation uniquement de 'text-center' -->
-            <h1 class="text-5xl font-semibold text-blue-600 dark:text-sky-400 text-center mt-16">Me contacter</h1>
-            <h2 class="text-2xl text-gray-700 font-pixel font-semibold mt-2 mb-8 text-center">Pour pouvoir me contacter, vous devez d'abord le mériter en répondant a ce questionnaire sur Undertale/Deltarune ! </h2>
+            <h1 class="text-5xl text-center mt-16" style="color: yellow; font-family: 'Determination'; font-size: 50px;">
+              Me contacter
+            </h1>
+            <h2 class="text-2xl mt-2 mb-8 text-center" style="font-family: 'Determination'; font-size: 20px;">
+              Pour pouvoir me contacter, vous devez d'abord le mériter en répondant à ce questionnaire sur Undertale/Deltarune !
+            </h2>
+            <button class="btn space-y-13" style="font-family: 'Determination'; font-size: 20px; ">ahhhhhh</button>
+            
           </div>
 
-          <div id="divquest" class="flex flex-col bg-blue-300 p-6 rounded-lg shadow-lg max-w-md w-full mt-12">
-            <h1 class="text-2xl font-bold mb-4 text-center text-gray-700">Questionnaire</h1>
-            <div id="question" class="text-xl font-bold mb-4 text-center text-gray-700">Quel est la capitale de la France ?</div>
-            <div id="reponses" class="flex flex-col space-y-2">
-              <button class="btn btn-primary">Chara</button>
-              <button class="btn btn-primary">Sans</button>
-              <button class="btn btn-primary">Frisk</button>
-              <button class="btn btn-primary">kris</button>
+          <div id="Questionnaire" class="flex flex-col bg-blue-300 p-6 rounded-lg shadow-lg max-w-md w-full mt-12">
+            <h1 class="text-2xl mb-4 text-center" style="color: yellow; font-family: 'Determination'; font-size: 50px;">
+              Questionnaire
+            </h1>
+            <div id="question" class="text-xl mb-4 text-center" style="font-family: 'Determination'; font-size: 20px; ">
+              Quel est le prénom du personnage que l'on possède ?
+            </div>
+            <div id="reponses" class="flex flex-col space-y-4">
+              <button class="" style="font-family: 'Determination';">Chara</button>
+              <button class="btn btn-primary text-lg font-bold" style="font-family: 'Determination';">Sans</button>
+              <button class="btn btn-primary text-lg font-bold" style="font-family: 'Determination';">Frisk</button>
+              <button class="btn btn-primary text-lg font-bold" style="font-family: 'Determination';">Kris</button>
             </div>
 
+            <p id="click-count" class="text-red-600 font-bold text-center" style="font-family: 'Determination'; font-size: 20px;">Nombre de clics: 0</p>
             <button id="bruteforce-btn" class="cursor-pointer transition active:scale-110 rounded-md mt-2 bg-red-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-red-700 focus:shadow-none active:bg-red-700 hover:bg-red-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" onclick="bruteforce(this)">Bruteforce 👨‍💻</button>
-            <p id="click-count" class="text-red-600 font-bold text-center">Nombre d'essai: 0</p>
-
-
-
-
+          <div id="result" class="text-lg text-red-700 text-center"></div>
             
-
-
-            <span id="spinner" class="loading loading-spinner text-neutral hidden loading-xl mb-4"></span>
-            <div id="result" class="text-lg text-red-700 text-center"></div>
-            <div id="countdown" class="text-lg text-green-600"></div>
           </div>
+          
+          </div>
+      
+        </div>
+      </div>
         </div>
       </div>
     </div>
   </div>
 
-  <footer>
-    <!-- Contenu du footer avec la couleur de fond et du texte centré -->
-    Footer du site
-  </footer>
-
-  <!-- CSS -->
-
-
-  <!-- JS -->
+  <script src="./js/calculatrice.js"></script>  
 </body>
-
 </html>
